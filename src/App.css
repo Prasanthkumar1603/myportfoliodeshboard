@@ -1,0 +1,238 @@
+/* src/App.css */
+
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* src/App.css */
+.sidebar {
+  width: 250px;
+  background-color: #007bff;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.sidebar ul li:hover {
+  background-color: #1787ff;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color:  white;
+  color: black;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+  text-align: center;
+}
+
+.header-icons span {
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.dashboard-content {
+  padding: 20px;
+  background-color: #f5f5f5;
+  height: calc(100vh - 80px); /* Adjust for header height */
+  overflow-y: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+table th, table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #007bff;
+  color: white;
+}
+
+table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Add this to your src/App.css */
+button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: darkred;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* src/components.css */
+
+/* General Styles */
+h2, h3 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  margin-bottom: 30px;
+}
+
+form input, form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+form textarea {
+  resize: vertical; /* Allow vertical resizing only */
+  height: 100px; /* Set a fixed height */
+}
+
+form button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+/* ExperienceComponent Styles */
+.experience-container, .project-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.experience-list, .project-list {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Experience List Styles */
+.experience-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.experience-list li {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.experience-list li button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.experience-list li button:hover {
+  background-color: #0056b3;
+}
+
+/* Project List Styles */
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.project-list .project-card {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.project-list .project-card img {
+  max-width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.project-list .project-card button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.project-list .project-card button:hover {
+  background-color: #0056b3;
+}
