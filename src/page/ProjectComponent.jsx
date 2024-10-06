@@ -16,7 +16,7 @@ const ProjectComponent = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/projects');
+        const response = await axios.get('https://portfolio-backend-drhl.onrender.com/api/projects');
         setProjects(response.data);
       } catch (error) {
         console.error('Error fetching projects:', error);
@@ -40,7 +40,7 @@ const ProjectComponent = () => {
     if (editingProjectId) {
       // Update an existing project
       try {
-        await axios.put(`http://localhost:5000/api/projects/${editingProjectId}`, projectData);
+        await axios.put(`https://portfolio-backend-drhl.onrender.com/api/projects/${editingProjectId}`, projectData);
         setProjects((prev) =>
           prev.map((project) =>
             project._id === editingProjectId ? { ...project, ...projectData } : project
@@ -54,7 +54,7 @@ const ProjectComponent = () => {
     } else {
       // Post a new project
       try {
-        const response = await axios.post('http://localhost:5000/api/projects', projectData);
+        const response = await axios.post('https://portfolio-backend-drhl.onrender.com/api/projects', projectData);
         setProjects([...projects, response.data]);
         alert('Project added successfully');
       } catch (error) {

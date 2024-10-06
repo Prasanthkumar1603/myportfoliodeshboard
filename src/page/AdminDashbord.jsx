@@ -54,7 +54,7 @@ const AdminDashboard = () => {
     // Delete all messages
     const deleteAllMessages = async () => {
         try {
-            await axios.delete('http://localhost:5000/api/messages');
+            await axios.delete('https://portfolio-backend-drhl.onrender.com/api/messages');
             setMessages([]); // Clear the state
             setFilteredMessages([]); // Clear filtered messages
         } catch (error) {

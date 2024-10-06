@@ -18,7 +18,7 @@ const ExperienceComponent = () => {
   useEffect(() => {
     const fetchExperiences = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/experience');
+        const response = await axios.get('https://portfolio-backend-drhl.onrender.com/api/experience');
         setExperiences(response.data);
       } catch (error) {
         console.error('Error fetching experiences:', error);
@@ -43,7 +43,7 @@ const ExperienceComponent = () => {
     if (editingExperienceId) {
       // Update an existing experience
       try {
-        await axios.put(`http://localhost:5000/api/experience/${editingExperienceId}`, experienceData);
+        await axios.put(`https://portfolio-backend-drhl.onrender.com/api/experience/${editingExperienceId}`, experienceData);
         setExperiences((prev) =>
           prev.map((exp) =>
             exp._id === editingExperienceId ? { ...exp, ...experienceData } : exp
@@ -57,7 +57,7 @@ const ExperienceComponent = () => {
     } else {
       // Post a new experience
       try {
-        const response = await axios.post('http://localhost:5000/api/experience', experienceData);
+        const response = await axios.post('https://portfolio-backend-drhl.onrender.com/api/experience', experienceData);
         setExperiences([...experiences, response.data]);
         alert('Experience added successfully');
       } catch (error) {
