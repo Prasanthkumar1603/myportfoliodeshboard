@@ -119,7 +119,7 @@ const ProjectComponent = () => {
       <h3>Projects List</h3>
       {projects.map((project) => (
         <div className="project-card" key={project._id}>
-          <img src={project.imageURL} alt={project.projectName} />
+          <img src={project.imageURL} alt={project.projectName} style={{width:"550px"}}/>
           <h4>{project.projectName}</h4>
           <p>{project.description}</p>
           <a href={project.sourceCodeLink} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">View Source Code</a>
