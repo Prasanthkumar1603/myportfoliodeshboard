@@ -124,6 +124,7 @@ const ProjectComponent = () => {
           <p>{project.description}</p>
           <a href={project.sourceCodeLink} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">View Source Code</a>
           <button onClick={() => handleEdit(project)}>Edit</button>
+          <hr />
         </div>
       ))}
     </div>

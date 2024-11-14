@@ -149,6 +149,7 @@ const ExperienceComponent = () => {
               <p>{experience.startDate} - {experience.isPresent ? 'Present' : experience.endDate}</p>
               <p>{experience.description}</p>
               <button onClick={() => handleEdit(experience)}>Edit</button>
+              <hr />
             </div>
           </li>
         ))}
