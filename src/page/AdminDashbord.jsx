@@ -105,7 +105,7 @@ const AdminDashboard = () => {
                         {filteredMessages.map((msg) => (
                             <tr key={msg._id}>
                                 <td>{msg.name}</td>
-                                <td>{msg.email}</td>
+                                <td>{msg.email||msg.whatsapp}</td>
                                 <td>{msg.message}</td>
                                 <td>{new Date(msg.createdAt).toLocaleString()}</td>
                                 <td>
