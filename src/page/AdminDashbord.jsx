@@ -66,60 +66,83 @@ const AdminDashboard = () => {
         return <div>Loading messages...</div>;
     }
 
-    return (
-        <div>
-            <h2>Messages</h2>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+return (
+  <div className="admin-dashboard">
+    <h2 className="page-title">Messages</h2>
 
-                 <div style={{ width: '75%' }}>
-                    <input
-                        type="text"
-                        placeholder="Search messages..."
-                        value={searchQuery}
-                        onChange={handleSearch}
-                        style={{ padding: '10px', width: '100%' }}
-                    />
-                </div>
+    {/* Top controls */}
+    <div className="top-bar">
+      <input
+        type="text"
+        placeholder="Search messages..."
+        value={searchQuery}
+        onChange={handleSearch}
+        className="search-input"
+      />
 
-                 <div>
-                    <button onClick={deleteAllMessages}>
-                        Delete All Messages
-                    </button>
-                </div>
+      <button className="delete-all-btn" onClick={deleteAllMessages}>
+        Delete All
+      </button>
+    </div>
 
-            </div>
-            {/* Delete All button */}
+    {/* Desktop Table */}
+    <div className="table-wrapper">
+      {filteredMessages.length > 0 ? (
+        <table className="message-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Contact</th>
+              <th>Message</th>
+              <th>Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredMessages.map((msg) => (
+              <tr key={msg._id}>
+                <td>{msg.name}</td>
+                <td>{msg.email || msg.whatsapp}</td>
+                <td>{msg.message}</td>
+                <td>{new Date(msg.createdAt).toLocaleString()}</td>
+                <td>
+                  <button
+                    className="delete-btn"
+                    onClick={() => deleteMessage(msg._id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No messages available</p>
+      )}
+    </div>
 
-            {filteredMessages.length > 0 ? (
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Message</th>
-                            <th>Date/Time</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredMessages.map((msg) => (
-                            <tr key={msg._id}>
-                                <td>{msg.name}</td>
-                                <td>{msg.email||msg.whatsapp}</td>
-                                <td>{msg.message}</td>
-                                <td>{new Date(msg.createdAt).toLocaleString()}</td>
-                                <td>
-                                    <button onClick={() => deleteMessage(msg._id)}>Delete</button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            ) : (
-                <p>No messages available</p>
-            )}
+    {/* Mobile Cards */}
+    <div className="mobile-cards">
+      {filteredMessages.map((msg) => (
+        <div className="message-card" key={msg._id}>
+          <p><strong>Name:</strong> {msg.name}</p>
+          <p><strong>Contact:</strong> {msg.email || msg.whatsapp}</p>
+          <p><strong>Message:</strong> {msg.message}</p>
+          <p className="date">
+            {new Date(msg.createdAt).toLocaleString()}
+          </p>
+          <button
+            className="delete-btn"
+            onClick={() => deleteMessage(msg._id)}
+          >
+            Delete
+          </button>
         </div>
-    );
+      ))}
+    </div>
+  </div>
+);
 };
 
 export default AdminDashboard;

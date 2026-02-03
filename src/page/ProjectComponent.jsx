@@ -117,16 +117,43 @@ const ProjectComponent = () => {
       </form>
 
       <h3>Projects List</h3>
-      {projects.map((project) => (
-        <div className="project-card" key={project._id}>
-          <img src={project.imageURL} alt={project.projectName} style={{width:"550px"}}/>
-          <h4>{project.projectName}</h4>
-          <p>{project.description}</p>
-          <a href={project.sourceCodeLink} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">View Source Code</a>
-          <button onClick={() => handleEdit(project)}>Edit</button>
-          <hr />
-        </div>
-      ))}
+      <div className="projects-grid">
+        {projects.map((project) => (
+          <div className="project-card" key={project._id}>
+
+            <div className="project-image">
+              <img
+                src={project.imageURL}
+                alt={project.projectName}
+              />
+            </div>
+
+            <div className="project-content">
+              <h4 className="project-title">{project.projectName}</h4>
+              <p className="project-desc">{project.description}</p>
+
+              <div className="project-actions">
+                <a
+                  href={project.sourceCodeLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="source-link"
+                >
+                  View Source Code
+                </a>
+
+                <button
+                  className="edit-btn"
+                  onClick={() => handleEdit(project)}
+                >
+                  Edit
+                </button>
+              </div>
+            </div>
+
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
