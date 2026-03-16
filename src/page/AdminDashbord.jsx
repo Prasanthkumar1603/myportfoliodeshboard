@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -7,11 +6,9 @@ const AdminDashboard = () => {
   const [messages, setMessages] = useState([]);
   const [filteredMessages, setFilteredMessages] = useState([]);
 
-  const [totalMessages, setTotalMessages] = useState(0);
-  const [totalProjects, setTotalProjects] = useState(0);
-
   const [displayMessages, setDisplayMessages] = useState(0);
   const [displayProjects, setDisplayProjects] = useState(0);
+  const [displayCertificates, setDisplayCertificates] = useState(0);
 
   const [experience, setExperience] = useState("");
 
@@ -20,11 +17,9 @@ const AdminDashboard = () => {
 
   const totalCertificates = 9;
 
-  const [displayCertificates, setDisplayCertificates] = useState(0);
 
 
-
-  // COUNTER ANIMATION FUNCTION
+  // COUNTER ANIMATION
   const animateCounter = (target, setter) => {
 
     let start = 0;
@@ -70,6 +65,10 @@ const AdminDashboard = () => {
     const years = Math.floor(totalMonths / 12);
     const months = totalMonths % 12;
 
+    if (months === 0) {
+      return `${years} Year`;
+    }
+
     return `${years} Year ${months} Month`;
 
   };
@@ -89,13 +88,13 @@ const AdminDashboard = () => {
         ]);
 
 
+
         // Messages
         const msgCount = messagesRes.data.length;
 
         setMessages(messagesRes.data);
         setFilteredMessages(messagesRes.data);
 
-        setTotalMessages(msgCount);
         animateCounter(msgCount, setDisplayMessages);
 
 
@@ -103,13 +102,18 @@ const AdminDashboard = () => {
         // Projects
         const projectCount = projectsRes.data.length;
 
-        setTotalProjects(projectCount);
         animateCounter(projectCount, setDisplayProjects);
 
+
+
+        // Certificates
         animateCounter(totalCertificates, setDisplayCertificates);
+
+
 
         // Experience
         const totalExp = calculateExperience(experienceRes.data);
+
         setExperience(totalExp);
 
 
@@ -134,6 +138,7 @@ const AdminDashboard = () => {
   const handleSearch = (e) => {
 
     const value = e.target.value.toLowerCase();
+
     setSearchQuery(value);
 
     const filtered = messages.filter((msg) =>
@@ -162,7 +167,7 @@ const AdminDashboard = () => {
       setFilteredMessages(updatedMessages);
 
       const newCount = updatedMessages.length;
-      setTotalMessages(newCount);
+
       animateCounter(newCount, setDisplayMessages);
 
       alert("Message Deleted Successfully");
@@ -188,7 +193,6 @@ const AdminDashboard = () => {
       setMessages([]);
       setFilteredMessages([]);
 
-      setTotalMessages(0);
       animateCounter(0, setDisplayMessages);
 
     } catch (error) {
@@ -202,7 +206,9 @@ const AdminDashboard = () => {
 
 
   if (loading) {
+
     return <div className="dashboard-content">Loading Dashboard...</div>;
+
   }
 
 
@@ -211,7 +217,8 @@ const AdminDashboard = () => {
 
     <div className="dashboard-content">
 
-      {/* DASHBOARD STATS */}
+
+      {/* STATS */}
 
       <div className="stats-grid">
 
@@ -239,6 +246,8 @@ const AdminDashboard = () => {
 
 
 
+      {/* MESSAGE SECTION */}
+
       <h2 className="page-title">Messages</h2>
 
 
@@ -253,7 +262,10 @@ const AdminDashboard = () => {
           className="search-input"
         />
 
-        <button className="delete-all-btn" onClick={deleteAllMessages}>
+        <button
+          className="delete-all-btn"
+          onClick={deleteAllMessages}
+        >
           Delete All
         </button>
 
@@ -292,12 +304,14 @@ const AdminDashboard = () => {
                   <td>{new Date(msg.createdAt).toLocaleString()}</td>
 
                   <td>
+
                     <button
                       className="delete-btn"
                       onClick={() => deleteMessage(msg._id)}
                     >
                       Delete
                     </button>
+
                   </td>
 
                 </tr>
@@ -356,4 +370,3 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
-
