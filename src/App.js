@@ -78,7 +78,6 @@ function App() {
         {/* Main Content */}
         <div className="main-content">
           <Header setSidebarOpen={setSidebarOpen} />
-
           <Routes>
             <Route path="/" element={<AdminDashboard />} />
             <Route path="/projects" element={<ProjectComponent />} />
@@ -86,7 +85,6 @@ function App() {
             <Route path="/about" element={<PortfolioPage />} />
           </Routes>
         </div>
-
       </div>
     </Router>
   );
